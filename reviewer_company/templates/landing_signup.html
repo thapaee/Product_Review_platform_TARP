@@ -1,0 +1,36 @@
+<html>
+<head>
+<style>
+body{
+  background: #0f8a9d;
+   background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+}
+.selection{
+     position:fixed;
+     top:50%;
+     left:50%;
+     transform: translate(-50%,-50%);
+}
+.choose{
+    width:300px;
+    height:300px;
+}
+button{
+  font-size: 25px;
+}
+a{
+  text-decoration: none;
+}
+button:hover{
+  cursor:pointer;
+}
+</style>
+</head>
+<body>
+<div class="selection">
+<center><h1>Please select your category<br></h1></center>
+<a href="{% url 'company_signup' %}"><button class="choose">We represent a Company</button></a>
+<a href="{% url 'reviewer_signup' %}"><button class="choose">I am a<br> Reviewer</button></a>
+</div>
+</body>
+</html>

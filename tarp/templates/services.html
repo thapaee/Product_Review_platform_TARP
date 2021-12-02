@@ -1,0 +1,104 @@
+<html>
+<head>
+<style>
+.first{
+margin:2%;
+  width:100%;
+  height:50px;
+  //box-shadow:0px 5px 5px gray;
+}
+.second{
+  margin-top:10%;
+  width:100%;
+ text-align:right;
+font-size:35px;
+  font-family:Copperplate;
+
+}
+body{
+  margin:0%;
+  background-image:linear-gradient(to left,#ffafbd,#ffc3a0);
+//linear-gradient(to right,#13547a,#80d0c7);
+
+
+
+}
+
+
+.d{
+ border:none;
+ background-color:#4166f5;
+ color:white;
+ font-size:30px;
+ //color:gray;
+ box-shadow:0px 5px 5px gray;
+}
+.e{
+  border:none;
+  color:#4166f5;
+  font-size:30px;
+  box-shadow:0px 5px 5px gray;
+//<div style="width:25%;display:inline-block;float:right;color:#4166f5;font-size:20px;">
+
+}
+a{
+
+  text-decoration:none;
+  color:inherit;
+}
+</style>
+</head>
+<body>
+<div class="first">
+<div style="width:33%;float:left;display:inline-block;font-size:30px;"><span style="color:white;font-weight:bolder;"><img src="/media/images/logo.png"></span></div>
+<div style="width:60%;margin-left:5%;display:inline-block;color:white;font-size:25px;padding-top:5px;">
+ <div style="width:20%;float:left;color:#4166f5;"><a href="{% url 'home' %}"><center>Home</center></a></div>
+ <div style="width:20%;float:left;color:#4166f5;border-top:2px solid black;"><a href="{% url 'services' %}"><center>About us</center></a></div>
+ <div style="width:20%;float:left;color:#4166f5;"><center>Contact Us</center></div>
+ <div style="width:20%;float:left;color:#4166f5;"><a href="{% url 'choose' %}"><center>login</center></a></div>
+ <div style="width:20%;float:left;color:#4166f5;"><a href="{% url 'signup_landing' %}"><center>Sign up</center></a></div>
+</div>
+</div>
+<br>
+<div><center>
+<h1>About The Review Co.</h1>
+</center>
+</div>
+<div style="font-size:20px">
+  <h2>
+    Who are we?
+  </h2>
+We are a team of enthusiasts working on make the product review process simple. We are focused to capture the first expression
+of the users as we all know first expression is the last expression. Currently, we are in beta phase and we are offering our Services
+for free. We would like to invite everyone to try our review system.
+</div>
+<div>
+  <h2>
+    What we Provide?
+  </h2>
+
+  <div style="width:45%;float:left;font-size:20px;margin-left:3%;border-right:2px solid gray;padding-right:2px;">
+    If you are a organization, we provide<ul>
+      <li>platform to test your products</li>
+      <li>platform to capture the first impression thatyour product makes on the users</li>
+      <li>platform to get insights on the products</li>
+      </ul>
+  </div>
+  <div style="width:45%;float:left;font-size:20px;margin-left:3%;">
+    If you would like to be an reviewer, we provide<ul>
+      <li>platform where you can get info on the products that are currently on the testing phase</li>
+      <li>platform to earn some incentives on different brand products</li>
+      <li></li>
+      </ul>
+  </div>
+
+</div>
+<hr>
+<div stylemargin-left>
+<h1>What do we charge?</h1>
+  <p style="font-size:20px;"> Currently we have just opened our services. So, currently we provide services free of cost. The services for our reviewers
+    will always be free. But at later point of time, the organizations wil have to pay a basic fee that will be decided at later point of
+    time.
+    </p>
+</div>
+</body>

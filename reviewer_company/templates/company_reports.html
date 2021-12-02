@@ -1,0 +1,141 @@
+<html>
+<head>
+<style>
+body{
+  margin:0;
+  background: #0f8a9d;
+      background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+}
+.navigation{
+width:15%;
+height:100%;
+position:fixed;
+margin: 0;
+border-right:solid gray;
+}
+.navigation button{
+  width:100%;
+  border:none;
+  display:inline-block;
+  padding:15px;
+  background-color:transparent;
+  font-size: 20px;
+  font-weight: bolder;
+
+}
+.navigation button:hover{
+   background-color:black;
+   color:white;
+   cursor:pointer;
+}
+.top{
+  margin-left:15%;
+}
+.docno{
+  margin-left:18%;
+  background-color:rgb(255,255,240);
+  width:250px;
+  height:200px;
+  margin-top: 2%;
+  float:left;
+  display:inline-block;
+
+  box-shadow:0px 10px 10px gray;
+}
+.patientno{
+  margin-left:5%;
+  background-color:white;
+  width:250px;
+  height:200px;
+  margin-top: 2%;
+  float:left;
+  display:block;
+  box-shadow:0px 10px 10px gray;
+}
+.round{
+  width:200px;
+  height:200px;
+  border-radius: 50%;
+  background-color: red;
+  background-image: url('/media/images/cause.jpg');
+}
+.doctable{
+  clear:both;
+  margin-left:18%;
+  background-color: white;
+  width: 500px;
+  height: 300px;
+  margin-top: 2%;
+  float:left;
+  display:inline-block;
+  box-shadow:0px 10px 10px gray;
+}
+.patienttable{
+  margin-left:2%;
+  background-color: white;
+  width: 500px;
+  height: 300px;
+  margin-top: 2%;
+  float:left;
+  display:inline-block;
+  box-shadow:0px 10px 10px gray;
+
+}
+.count{
+    text-align:center;
+    font-size:50px;
+    font-weight:bolder;
+
+}
+table{
+  width:100%;
+}
+.to{
+  float:left;
+  margin-left:2%;
+  margin-top:1%;
+  background-color: white;
+  width:300px;
+  height:290px;
+  box-shadow:0px 10px 10px gray;
+
+}
+.to:hover{
+  box-shadow:0px 10px 10px green;
+}
+</style>
+</head>
+<body>
+
+<div class="navigation">
+  <div class="round">
+  </div>
+  <a href="{% url 'overview_company' %}"><button>Overview</button></a>
+    <a href="{% url 'upload' %}"><button>Add product</button></a>
+    <a href="{% url 'company_reports' %}"><button style="background-color:black;color:white;">Results</button></a>
+    <a href="{% url 'company_profile' %}"><button>Profile</button></a>
+    <a href="{% url 'signout' %}"><button>Sign Out</button></a>
+</div>
+
+<div class="top"><center><h2>Choose the product for results</h2></center><hr></div>
+<div style="margin-left:18%;">
+
+  {% for x in p %}
+  <div class="to" >
+  <img src="{{ x.image1.url }}" width=300px height=150px><br>
+  <b>Name of the product:</b> {{x.title}}<br>
+  <b>Description       :</b> {{x.description}}
+  <br><b>Product Type:</b>{{x.product_type}}
+  <form action="{% url 'company_visualize' %}" method="POST">
+  <input type="hidden" value="{{ x.id }}" name="pid">
+  <input type="hidden" value="{{ x.product_type }}" name="ptype">
+  <input type="hidden" value="{{ x.title }}" name="pname">
+  <br>
+  <input type="submit" value="check report">
+  </form>
+  </div>
+  {% endfor %}
+</div>
+
+</body>
+</html>

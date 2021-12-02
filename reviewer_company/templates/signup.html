@@ -1,0 +1,179 @@
+<html>
+<head>
+<style>
+body{
+   margin:0px;
+   background: #0f8a9d;
+    background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+}
+.container{
+     padding:10px;
+     position:fixed;
+     top:50%;
+     left:50%;
+     transform: translate(-50%,-50%);
+     width:400px;
+     box-shadow:10px 15px 135px ;
+     background-color:white;
+     border-radius:5%;
+}
+
+h1{
+  color:black;
+}
+.form-submit{
+    background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+    cursor:pointer;
+    width:80%;
+    radius:5%;
+    height:2em;
+    border:none;
+    font-size:1em;
+    margin-left:7%;
+    font-weight:bold;
+    color:white;
+    
+}
+.form-submit:hover{
+    background: linear-gradient(57deg, #1E4D92, #00C6A7 );
+}
+label,span{
+  margin-left:7%;
+}
+.or{
+  width:80%;
+  margin-left:7%;
+
+  border-top-style: hidden;
+ border-right-style: hidden;
+ border-left-style: hidden;
+ border-bottom-style: groove;
+
+}
+.or:focus{
+  outline:none;
+  box-shadow:none;
+  border-color:orange;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1><center>Sign Up</center></h1><hr>
+<form action="{% url 'reviewer_signup' %}" method="post" class="form" autocomplete="off">
+  <div>
+    <label>Name</label>
+  <input type="text" name="name" class="or" placeholder="Name" required>
+</div><br>
+   <div >
+     <label>Email Id</label>
+   <input type="email" name="email" id="email1" class="or" placeholder="a@b.com" onkeyup="validate_email()" required><br>
+   <span id="email2"></span>
+   </div>
+
+<div>
+  <label>Phone number</label>
+   <input type="text" name="phone" class="or" id="phone1" placeholder="XXXXXXXXXX" onkeyup="validate_phone()" required>
+   <span id="phone2"></span>
+   </div>
+<br>
+<div>
+  <label>Choose any 3 Product type:</label>
+  <br>
+  <div style="margin-left:7%;">
+   <input type="checkbox" value="sports" name="sports" class="c">Sports <input type="checkbox" value="clothes" name="sports" class="c">Clothes<input type="checkbox" value="tech" name="sports" class="c">Tech<input type="checkbox" value="vechile" name="sports" class="c">Vechile
+    <br><input type="checkbox" value="food" name="sports">food <input type="checkbox" value="Websites" name="sports">websites
+
+</div>
+</div>
+<br>
+   <div>
+     <label>password</label>
+   <input type="password" name="password" class="or" id="pwd1" class="form-control" placeholder="password" onkeyup="validate_password()" required>
+   <span id="pwd2"></span>
+   </div>
+   <div>
+     <label>Re-enter password</label>
+   <input type="password" name="repwd" class="or" id="pwd3" placeholder="password" onkeyup="validate_password2()" required>
+   <span id="pwd4"></span>
+   </div>
+   <br>
+   <input type="submit" name="submit" value="Sign up" class="form-submit">
+</form><br>
+<a href="{% url 'reviewer_login' %}" style="margin-left:7%;"> &lt;&lt;&nbsp;Return to Login Page </a><br>
+<a href="{% url 'home' %}" style="margin-left:7%;"> &lt;&lt;&nbsp;Return to homepage</a>
+
+</div>
+<script>
+var a=false;
+var b=false;
+var c=false;
+var p1=false;
+var p2=false;
+function validate_email(){
+    var email=document.getElementById("email1").value;
+    var text=document.getElementById("email2");
+    var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+   if(email.match(pattern))
+   {
+    text.innerHTML="your email is valid";
+    text.style.color="green";
+    a=true;
+}
+    else{
+    text.innerHTML="your email is invalid";
+    text.style.color="red";
+    a=false;
+    }
+}
+function validate_phone(){
+    var phone=document.getElementById("phone1").value;
+    var text=document.getElementById("phone2");
+    var pattern =/^[7-9][0-9]{9}$/;
+   if(phone.match(pattern))
+   {
+    text.innerHTML="your number is valid";
+    text.style.color="green";
+    b=true;
+}
+    else{
+    text.innerHTML="please enter a valid 10 digit number";
+    text.style.color="red";
+    b=false;
+    }
+}
+function validate_password(){
+  var pwd=document.getElementById("pwd1").value;
+  var text=document.getElementById("pwd2");
+  text.style.color="red";
+  if(pwd.length<8){
+    text.innerHTML="*length must be greater than 8<br>";
+  }
+  else{
+    text.innerHTML="";
+  }
+  if(pwd.match(/(?=.*[0-9])/)){
+
+  }
+  else{
+    text.innerHTML+="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*must contain a digit";
+  }
+
+}
+function validate_password2(){
+  var pwd1=document.getElementById("pwd1").value;
+  var pwd2=document.getElementById("pwd3").value;
+  var text=document.getElementById("pwd4");
+  text.style.color="red";
+  if(pwd1!=pwd2){
+    text.innerHTML="Password doesn't match";
+  }
+  else{
+    text.innerHTML="";
+  }
+
+}
+</script>
+
+</body>
+</html>

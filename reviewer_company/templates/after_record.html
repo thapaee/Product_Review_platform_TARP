@@ -1,0 +1,206 @@
+<html>
+<head>
+<style>
+body{
+  margin:0;
+  background: #0f8a9d;
+    background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+}
+.navigation{
+width:15%;
+height:100%;
+position:fixed;
+margin: 0;
+border-right:solid gray;
+}
+.navigation button{
+  width:100%;
+  border:none;
+  display:inline-block;
+  padding:15px;
+  background-color:transparent;
+  font-size: 20px;
+  font-weight: bolder;
+
+}
+.navigation button:hover{
+   background-color:black;
+   color:white;
+}
+.top{
+  margin-left:15%;
+}
+.round{
+  width:200px;
+  height:200px;
+  border-radius: 50%;
+  background-color: red;
+  background-image: url('/media/images/review.jpg');
+}
+.questions{
+  margin-left:18%;
+  background-color:white;
+  display:inline-block;
+}
+label{
+   font-size:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="navigation">
+  <div class="round">
+  </div>
+  <a href="{% url 'overview_reviewer' %}"><button>Overview</button></a>
+  <a href="{% url 'view_products' %}"><button style="background-color:black;color:white;">Product review</button></a>
+  <a href="{% url 'incentives' %}"><button>Incentives</button></a>
+  <a href="#"><button>Profile</button></a>
+  <a href="{% url 'signout' %}"><button>Sign Out</button></a>
+</div>
+
+<div class="top"><center><h2>{{request.session.name}}, Please complete the form below to finish the review</h2></center><hr></div>
+
+<div class="questions" style="margin-left:18%;">
+  <center><h1 style="background-color:powderblue;margin:0;">Thanks for your patience.<br> Now please answer the following questions<br><hr></h1></center>
+  <form method="POST" action="{% url 'reviewer_thanks' %}">
+    <input type="hidden" value="{{pid}}" name="pid">
+    <input type="hidden" value="{{ptype}}" name="ptype">
+    <input type="hidden" value="{{reaction}}" name="reaction">
+    {% ifequal ptype 'food' %}
+    1. Do you think the food item displayed will fit in your diet plan?<br>
+    <input type="radio" name="1" value="yes">yes<input type="radio" name="1" value="no">no<br>
+    2. In your view has the food item been properly represented by package designing?<br>
+    <input type="radio" name="2" value="yes">yes<input type="radio" name="2" value="no">no<br>
+    3. Have you eaten this type of packaged food before?<br>
+    <input type="radio" name="3" value="yes">yes<input type="radio" name="3" value="no">no<br>
+    4. Give your views on the calorific value of the food?<br>
+    <textarea name="4" rows=5 cols=50></textarea><br>
+    5.Will you use the product when it will be available in the market?<br>
+    <input type="radio" name="5" value="yes">yes<input type="radio" name="5" value="no">no<input type="radio" name="5" value="maybe">maybe<br>
+    6.What do you expect the price of the product will be?<br>
+    <input type="number" name="6"><br>
+    7. Give your views about the design of the product?<br>
+    <textarea name="7" rows=5 cols=50></textarea><br>
+    8. Do you find the product offensive in any way(like discrimination)?<br>
+    <input type="radio" name="8" value="yes">yes<input type="radio" name="8" value="no">no<input type="radio" name="8" value="maybe">maybe<br>
+    9. Mention what you didn't like about the product?<br>
+      <textarea name="9" rows=5 cols=50></textarea><br>
+    10. Give a overall rating for the product.<br>
+    <input type="radio" name="10" value="Excellent"><label>Excellent</label>&nbsp;
+    <input type="radio" name="10" value="Good"><label>Good</label>&nbsp;
+    <input type="radio" name="10" value="Satisfactory"><label>Satisfactory</label>&nbsp;
+    <input type="radio" name="10" value="Poor"><label>Poor</label>&nbsp;
+    <input type="radio" name="10" value="Verypoor"><label>Very Poor</label>&nbsp;<br>
+    {% endifequal %}
+    {% ifequal ptype 'vechile' %}
+    1. Do you think the vechile is appropriate for your daily use?<br>
+    <input type="radio" name="1" value="yes">yes<input type="radio" name="1" value="no">no<br>
+    2. Does the vechile seems to be comfortable?<br>
+    <input type="radio" name="2" value="yes">yes<input type="radio" name="2" value="no">no<br>
+    3. Have you driven this type of vechile before?<br>
+    <input type="radio" name="3" value="yes">yes<input type="radio" name="3" value="no">no<br>
+    4. Will you buy the vechile when it is available in the market?<br>
+    <input type="radio" name="4" value="yes">yes<input type="radio" name="4" value="no">no<br>
+    5. Will a chance to test drive the vechile contribute to change your decision?<br>
+    <input type="radio" name="5" value="yes">yes<input type="radio" name="5" value="no">no<input type="radio" name="5" value="maybe">maybe<br>
+    6. What did you like about the vechile?<br>
+    <textarea name="6" rows=3 cols=50></textarea><br>
+    7. Do you think the vechile will be able to compete with other competitors in the market?<br>
+    <input type="radio" name="7" value="yes">yes<input type="radio" name="7" value="no">no<input type="radio" name="7" value="maybe">marbe<br>
+    8. Write what you think specificaly about the design of the vechile?<br>
+    <textarea name="8" rows=3 cols=50></textarea><br>
+    9. Are you satisfied with it's petrol capacity and engine specifications?<br>
+    <input type="radio" name="9" value="yes">yes<input type="radio" name="9" value="no">no<br>
+    10. Give a overall rating for the product.<br>
+    <input type="radio" name="10" value="Excellent"><label>Excellent</label>&nbsp;
+    <input type="radio" name="10" value="Good"><label>Good</label>&nbsp;
+    <input type="radio" name="10" value="Satisfactory"><label>Satisfactory</label>&nbsp;
+    <input type="radio" name="10" value="Poor"><label>Poor</label>&nbsp;
+    <input type="radio" name="10" value="Verypoor"><label>Very Poor</label>&nbsp;<br>
+    {% endifequal %}
+    {% ifequal ptype 'clothes' %}
+    1.Did you find your size in the size list?<br>
+    <input type="radio" name="1" value="yes">yes<input type="radio" name="1" value="no">no<br>
+    2.Do you think the clothe was very simple, over designed or appropriately designed?<br>
+    <input type="radio" name="2" value="simple">simple<input type="radio" name="2" value="over designed">over designed<input type="radio" name="2" value="appropriate">appropriate<br>
+    3.Have you worn this type of style before?<br>
+    <input type="radio" name="3" value="yes">yes<input type="radio" name="3" value="no">no<br>
+    4.Do you think the design is outdated?<br>
+    <input type="radio" name="4" value="yes">yes<input type="radio" name="4" value="no">no<br>
+    5.What do you expect the price to be?<br>
+    <input type="number" name="5">
+    6.What you liked the most about the product?<br>
+    <textarea name="6" rows=3 cols=50></textarea>
+    7.Will you add this to your wardrobe?<br>
+    <input type="radio" name="7" value="yes">yes<input type="radio" name="7" value="no">no<br>
+    8. For which season do you think is the clothe appropriate?<br>
+    <input type="radio" name="8" value="summer">summer<input type="radio" name="8" value="winter">winter<br>
+    9. What was the first thing that came to your mind when you saw the clothe?<br>
+    <textarea name="9"></textarea>
+    10. Give a overall rating for the product.<br>
+    <input type="radio" name="10" value="Excellent"><label>Excellent</label>&nbsp;
+    <input type="radio" name="10" value="Good"><label>Good</label>&nbsp;
+    <input type="radio" name="10" value="Satisfactory"><label>Satisfactory</label>&nbsp;
+    <input type="radio" name="10" value="Poor"><label>Poor</label>&nbsp;
+    <input type="radio" name="10" value="Verypoor"><label>Very Poor</label>&nbsp;<br>
+    {% endifequal %}
+    {% ifequal ptype 'tech' %}
+    1. Have you used this type of electronic device before?<br>
+      <input type="radio" name="1" value="yes">yes<input type="radio" name="1" value="no">no<br>
+    2. Do you think the device will be useful in you daily life<br>
+    <input type="radio" name="2" value="yes">yes<input type="radio" name="2" value="no">no<br>
+    3. What do you think is the most appealing?<br>
+  <input type="radio" name="3" value="design">Design<input type="radio" name="3" value="features">features<input type="radio" name="3" value="both">both<br>
+    4. Have you used any product from this company's ecosystem?<br>
+<input type="radio" name="4" value="yes">yes<input type="radio" name="4" value="no">no<br>
+    5. Rate the looks of the device.
+    <input type="radio" name="5" value="1">1<input type="radio" name="5" value="2">2<input type="radio" name="5" value="3">3<input type="radio" name="5" value="4">4<input type="radio" name="5" value="5">5<br>
+    6. Estimate the price of the device<br>
+    <input type="number" name="6"><br>
+    7. If you were to buy this product, would you like us to launch different models such as basic and advanced?<br>
+    <input type="radio" name="7" value="yes">yes<input type="radio" name="7" value="no">no<br>
+
+    8. Compare the product with the current available technologies.<br>
+    <textarea name="8" rows=3 cols=50></textarea><br>
+    9. Mention the most appealing feature of the device in your view.<br>
+    <textarea name="9" rows=3 cols=50></textarea><br>
+    10. Give a overall rating for the product.<br>
+    <input type="radio" name="10" value="Excellent"><label>Excellent</label>&nbsp;
+    <input type="radio" name="10" value="Good"><label>Good</label>&nbsp;
+    <input type="radio" name="10" value="Satisfactory"><label>Satisfactory</label>&nbsp;
+    <input type="radio" name="10" value="Poor"><label>Poor</label>&nbsp;
+    <input type="radio" name="10" value="Verypoor"><label>Very Poor</label>&nbsp;<br>
+    {% endifequal %}
+    {% ifequal ptype 'sports' %}
+    1. Have you ever played the sports related to the product?<br>
+    <input type="radio" name="1" value="yes">yes<input type="radio" name="1" value="no">no<br>
+    2. Do you think the product is appropriate for the sports?<br>
+    <input type="radio" name="2" value="yes">yes<input type="radio" name="2" value="no">no<br>
+    3. What do you think would be the price of the product?<br>
+    <input type="number" name="3"><br>
+    4. In your view, does the product seem to be made following all the rules of game?<br>
+    <input type="radio" name="4" value="yes">yes<input type="radio" name="4" value="no">no<input type="radio" name="4" value="maybe">maybe<br>
+    5. Do you think the design of the product is attractive?<br>
+    <input type="radio" name="5" value="1">1<input type="radio" name="5" value="2">2<input type="radio" name="5" value="3">3<input type="radio" name="5" value="4">4<input type="radio" name="5" value="5">5<br>
+    6. How is the product in comparison to other competitor products?<br>
+    <textarea name="6" rows=5 cols=50></textarea><br>
+    7. What do you like most about the product?<br>
+    <textarea name="7" rows=5 cols=50></textarea><br>
+    8. Give some suggestion for its improvement.<br>
+    <textarea name="8" rows=5 cols=50></textarea><br>
+    9. Will you use the product when released?<br>
+    <input type="radio" name="9" value="yes">yes<input type="radio" name="9" value="no">no<br>
+
+    10. Give a overall rating for the product.<br>
+    <input type="radio" name="10" value="Excellent"><label>Excellent</label>&nbsp;
+    <input type="radio" name="10" value="Good"><label>Good</label>&nbsp;
+    <input type="radio" name="10" value="Satisfactory"><label>Satisfactory</label>&nbsp;
+    <input type="radio" name="10" value="Poor"><label>Poor</label>&nbsp;
+    <input type="radio" name="10" value="Verypoor"><label>Very Poor</label>&nbsp;<br>
+    {% endifequal %}
+<br><a href="{% url 'view_products' %}"><button style="font-size:25px;" type="button">Cancel</button></a><input type="submit" value="Finish Review" style="font-size:25px;background-color:powderblue;">
+  </form>
+</div>
+</body>
+</html>

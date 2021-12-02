@@ -1,0 +1,141 @@
+<html>
+<head>
+<style>
+body{
+  margin:0;
+  background: #0f8a9d;
+      background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+}
+.navigation{
+width:15%;
+height:100%;
+position:fixed;
+margin: 0;
+border-right:solid gray;
+}
+.navigation button{
+  width:100%;
+  border:none;
+  display:inline-block;
+  padding:15px;
+  background-color:transparent;
+  font-size: 20px;
+  font-weight: bolder;
+
+}
+.navigation button:hover{
+   background-color:black;
+   color:white;
+   cursor:pointer;
+}
+.top{
+  margin-left:15%;
+}
+.docno{
+  margin-left:18%;
+  background-color:rgb(255,255,240);
+  width:250px;
+  height:200px;
+  margin-top: 2%;
+  float:left;
+  display:inline-block;
+
+  box-shadow:0px 10px 10px gray;
+}
+.patientno{
+  margin-left:5%;
+  background-color:white;
+  width:250px;
+  height:200px;
+  margin-top: 2%;
+  float:left;
+  display:block;
+  box-shadow:0px 10px 10px gray;
+}
+.round{
+  width:200px;
+  height:200px;
+  border-radius: 50%;
+  background-color: red;
+  background-image: url('/media/images/cause.jpg');
+}
+.doctable{
+  clear:both;
+  margin-left:18%;
+  background-color: white;
+  width: 500px;
+  height: 300px;
+  margin-top: 2%;
+  float:left;
+  display:inline-block;
+  box-shadow:0px 10px 10px gray;
+}
+.patienttable{
+  margin-left:2%;
+  background-color: white;
+  width: 500px;
+  height: 300px;
+  margin-top: 2%;
+  float:left;
+  display:inline-block;
+  box-shadow:0px 10px 10px gray;
+
+}
+.count{
+    text-align:center;
+    font-size:50px;
+    font-weight:bolder;
+
+}
+table{
+  width:100%;
+}
+li{
+  font-size:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="navigation">
+  <div class="round">
+  </div>
+  <a href="{% url 'overview_company' %}"><button style="background-color:black;color:white;">Overview</button></a>
+    <a href="{% url 'upload' %}"><button>Add product</button></a>
+    <a href="{% url 'company_reports' %}"><button>Results</button></a>
+    <a href="{% url 'company_profile' %}"><button>Profile</button></a>
+    <a href="{% url 'signout' %}"><button>Sign Out</button></a>
+</div>
+
+<div class="top"><center><h2>Welcome on board, {{request.session.name}}!!</h2></center><hr></div>
+
+<div class="docno">
+<center><h3 style="background-color:powderblue;margin:0;padding-top:5px;">Total Reviews<hr></h3></center>
+<center><span style="font-size:100px;">{{total_review}}</span></center>
+</div>
+<div class="patientno"><center><h3 style="background-color:powderblue;margin:0;padding-top:5px;">Products addeds<hr></h3></center>
+<center><span style="font-size:100px;">{{total_product}}</span></center>
+</div>
+
+<div class="doctable">
+<center><h3 style="background-color:powderblue;margin:0;padding-top:5px;">Guidelines<hr></h3></center>
+<ol>
+  <li>Add products in the add product section</li>
+  <li>To check the reviews, go to the results section</li>
+  <li> We keep our reviewers information confidential </li>
+  <li>If you face any problem, contact us at abc@xyz.com</li>
+</ol>
+
+
+</div>
+<div class="patienttable">
+<center><h3 style="background-color:red;margin:0;padding-top:5px;color:white;">Warning<hr></h3></center>
+<ol>
+  <li>The site is not for advertiseing your products</li>
+  <li>The product pictures must not contain anything related to <ul><li>racism</li><li>animal cruelty</li><li>any thing illegal in india</li></ul></li>
+  <li>The information of the reviewers will not be provided</li>
+  <li>If you face any problem, contact us at abc@xyz.com</li>
+</ol>
+</div>
+</body>
+</html>

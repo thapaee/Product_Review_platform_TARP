@@ -1,0 +1,67 @@
+<html>
+<head>
+<style>
+.first{
+margin:2%;
+  width:100%;
+  height:50px;
+  //box-shadow:0px 5px 5px gray;
+}
+.second{
+  margin-top:10%;
+  width:100%;
+ text-align:right;
+font-size:35px;
+  font-family:Copperplate;
+
+}
+body{
+  margin:0%;
+  background-image:linear-gradient(to left,#ffafbd,#ffc3a0);
+//linear-gradient(to right,#13547a,#80d0c7);
+}
+.d{
+ border:none;
+ background-color:#4166f5;
+ color:white;
+ font-size:30px;
+ //color:gray;
+ box-shadow:0px 5px 5px gray;
+}
+.e{
+  border:none;
+  color:#4166f5;
+  font-size:30px;
+  box-shadow:0px 5px 5px gray;
+//<div style="width:25%;display:inline-block;float:right;color:#4166f5;font-size:20px;">
+
+}
+a{
+
+  text-decoration:none;
+  color:inherit;
+}
+</style>
+</head>
+<body>
+<div class="first">
+<div style="width:33%;float:left;display:inline-block;"><span style="color:white;font-weight:bolder;"><img src="/media/images/logo.png"></span></div>
+<div style="width:60%;margin-left:5%;display:inline-block;color:white;font-size:25px;padding-top:5px;">
+ <div style="width:20%;float:left;color:#4166f5;border-top:2px solid black;"><a href="{% url 'home' %}"><center>Home</center></a></div>
+ <div style="width:20%;float:left;color:#4166f5;"><a href="{% url 'services' %}"><center>About us</center></a></div>
+ <div style="width:20%;float:left;color:#4166f5;"><center>Contact Us</center></div>
+ <div style="width:20%;float:left;color:#4166f5;"><a href="{% url 'choose' %}"><center>login</center></a></div>
+ <div style="width:20%;float:left;color:#4166f5;"><a href="{% url 'signup_landing' %}"><center>Sign up</center></a></div>
+</div>
+</div>
+<div>
+<div style="display:inline-block;margin-top:20%;margin-left:2%;font-size:40px;padding-top:20px;padding-right:5px;float:left;">"The perfect connection between<br><center> companies and users"</center><br>
+  <button class="d"><a href="{% url 'signup_landing' %}">Join our Family</a></button>
+  <button class="e">Know more about us</button>
+</div>
+<div style="font-size:40px;margin-left:1%;justify-content:left;margin-top:5%">
+We believe in iterative process of product design where feedbacks are the key to improvement.We provide companies the first impression of their products by the public and  the public with incentives for their valuable feedback.
+
+</div>
+</div>
+</body>

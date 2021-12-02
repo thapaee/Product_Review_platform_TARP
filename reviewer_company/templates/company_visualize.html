@@ -1,0 +1,815 @@
+{% load static %}
+<html>
+<head>
+<style>
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+
+}
+body{
+  margin:0;
+  background: #0f8a9d;
+    background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+}
+.navigation{
+width:15%;
+height:100%;
+position:fixed;
+margin: 0;
+border-right:solid gray;
+}
+.navigation button{
+  width:100%;
+  border:none;
+  display:inline-block;
+  padding:15px;
+  background-color:transparent;
+  font-size: 20px;
+  font-weight: bolder;
+
+}
+.navigation button:hover{
+   background-color:black;
+   color:white;
+   cursor:pointer;
+}
+.top{
+  margin-left:15%;
+
+}
+.docno{
+  margin-left:16%;
+  background-color:rgb(255,255,240);
+  width:350px;
+  height:300px;
+  margin-top: 1%;
+  float:left;
+  display:inline-block;
+
+  box-shadow:0px 10px 10px gray;
+}
+
+.round{
+  width:200px;
+  height:200px;
+  border-radius: 50%;
+  background-color: red;
+  background-image: url('/media/images/cause.jpg ');
+}
+
+.count{
+    text-align:center;
+    font-size:50px;
+    font-weight:bolder;
+
+}
+table{
+  width:100%;
+}
+
+</style>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+
+<div class="navigation">
+  <div class="round">
+
+  </div>
+  <a href="{% url 'overview_company' %}"><button>Overview</button></a>
+    <a href="{% url 'upload' %}"><button>Add product</button></a>
+    <a href="{% url 'company_reports' %}"><button style="background-color:black;color:white;">Results</button></a>
+    <a href="{% url 'company_profile' %}"><button>Profile</button></a>
+    <a href="{% url 'signout' %}"><button>Sign Out</button></a>
+</div>
+
+<div class="top"><center><h2> Check the reports for {{pname}} </h2></center><hr></div>
+<div style="margin-left:16%;background-color: #777;color: white;display:inline-block;padding:18px;">
+Total reviews:{{total}}
+</div>
+<br><br>
+{% ifequal ptype 'food' %}
+
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Result of Facial emotion analysis</button>
+<div class="content" id="piechart">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Will the customer be able to include it in his diet?</button>
+<div class="content" id="piechart2">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Did the packaging represented the food item?</button>
+<div class="content" id="piechart3">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Has the reviewer tried this type of food before?</button>
+<div class="content" id="piechart4">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Will the user use the product when it is available in market?</button>
+<div class="content" id="piechart5">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Did the reviewer find the product offensive?</button>
+<div class="content" id="piechart6">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Product rating by the reviewer</button>
+<div class="content" id="piechart7">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Text Sentiment Analysis</button>
+<div class="content" id="piechart8">
+
+</div>
+</div>
+{% endifequal %}
+{% ifequal ptype 'tech' %}
+
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Result of Facial emotion analysis</button>
+<div class="content" id="piechart">
+
+</div>
+</div>
+
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Will the reviewer think the device will be used in his daily life?</button>
+<div class="content" id="piechart2">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Reviewer choice between the product design or product feature?</button>
+<div class="content" id="piechart3">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Will the user buy the vechile when it is available in market?</button>
+<div class="content" id="piechart4">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Has the reviewer used any product from your company's ecosystem?</button>
+<div class="content" id="piechart5">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Ratings for the looks of product(1 to 5)</button>
+<div class="content" id="piechart6">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Does the reviewer like the option to chose from advanced or basic edition?</button>
+<div class="content" id="piechart7">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Product rating by the reviewer</button>
+<div class="content" id="piechart8">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Text Sentiment Analysis</button>
+<div class="content" id="piechart9">
+
+</div>
+</div>
+{% endifequal %}
+{% ifequal ptype 'vechile' %}
+
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Result of Facial emotion analysis</button>
+<div class="content" id="piechart">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Did the reviewer find it appropriate for his daily comute?</button>
+<div class="content" id="piechart2">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Did the reviewer think it was comfortable?</button>
+<div class="content" id="piechart3">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Have the reviewer driven this type of vechile before?</button>
+<div class="content" id="piechart4">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Will the user buy the vechile when it is available in market?</button>
+<div class="content" id="piechart5">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Will the user like to test ride the vechile?</button>
+<div class="content" id="piechart6">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Will the vechile be able to compete with its competitors(reviewer view)?</button>
+<div class="content" id="piechart7">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Do you think the petrol capacity should be increased?</button>
+<div class="content" id="piechart8">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Product rating by the reviewer</button>
+<div class="content" id="piechart9">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Text Sentiment Analysis</button>
+<div class="content" id="piechart10">
+
+</div>
+</div>
+{% endifequal %}
+{% ifequal ptype 'clothes' %}
+
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Result of Facial emotion analysis</button>
+<div class="content" id="piechart">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Was the size of the clothing in the size list?</button>
+<div class="content" id="piechart2">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">What the user thought about the design?</button>
+<div class="content" id="piechart3">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Has the user worn this type of clothe with similar styling?</button>
+<div class="content" id="piechart4">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Does the reviewer think your design is outdated?</button>
+<div class="content" id="piechart5">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Will the user add this to their collection?</button>
+<div class="content" id="piechart6">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">The user thinks the clothe willl be appropriate for......</button>
+<div class="content" id="piechart7">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Product rating by the reviewer</button>
+<div class="content" id="piechart8">
+
+</div>
+</div><div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Text Sentiment Analysis</button>
+<div class="content" id="piechart9">
+
+</div>
+</div>
+{% endifequal %}
+
+{% ifequal ptype 'sports' %}
+
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Result of Facial emotion analysis</button>
+<div class="content" id="piechart">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Are the reviewers familiar with the sports?</button>
+<div class="content" id="piechart2">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Does the reviewer think if the product is suitable for the sports?</button>
+<div class="content" id="piechart3">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Does the product seem to follow all the rules of the sports?</button>
+<div class="content" id="piechart4">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Is the design attractive?</button>
+<div class="content" id="piechart5">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Will the user buy the product when released?</button>
+<div class="content" id="piechart6">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Product rating by the reviewer</button>
+<div class="content" id="piechart8">
+
+</div>
+</div>
+<div style="margin-left:16%; width:600px;">
+<button type="button" class="collapsible">Text Sentiment Analysis</button>
+<div class="content" id="piechart9">
+
+</div>
+</div>
+{% endifequal %}
+
+<script type="text/javascript">
+// Load google charts
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+
+function drawChart() {
+{% ifequal ptype 'food' %}
+  var data = google.visualization.arrayToDataTable([
+  ['Reactions', 'Count'],
+  ['happy', {{happy}}],
+  ['sad', {{sad}}],
+  ['Neutral', {{neutral}}],
+  ['angry', {{angry}}],
+  ['suprise', {{suprise}}]
+]);
+var data2 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes1}}],
+['no', {{no1}}]
+]);
+var data3 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes2}}],
+['no', {{no2}}]
+]);
+var data4 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes3}}],
+['no', {{no3}}]
+]);
+var data5 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes5}}],
+['no', {{no5}}],
+['maybe', {{maybe5}}]
+]);
+var data6 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes8}}],
+['no', {{no8}}]
+
+]);
+var data7 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['excellent', {{excellent}}],
+['good', {{good}}],
+['satisfactory', {{satisfactory}}],
+['poor', {{poor}}],
+['very poor',{{verypoor}}]
+]);
+
+var data7 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['excellent', {{excellent}}],
+['good', {{good}}],
+['satisfactory', {{satisfactory}}],
+['poor', {{poor}}],
+['very poor',{{verypoor}}]
+]);
+var data8 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['positive', {{positive}}],
+['negative', {{negative}}],
+['neutral', {{neutral1}}]
+
+]);
+  // Optional; add a title and set the width and height of the chart
+  var options = {'width':350, 'height':300};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
+  chart2.draw(data2, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart3'));
+  chart2.draw(data3, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart4'));
+  chart2.draw(data4, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart5'));
+  chart2.draw(data5, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart6'));
+  chart2.draw(data6, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart7'));
+  chart2.draw(data7, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart8'));
+  chart2.draw(data8, options);
+{% endifequal %}
+{% ifequal ptype 'vechile' %}
+  var data = google.visualization.arrayToDataTable([
+  ['Reactions', 'Count'],
+  ['happy', {{happy}}],
+  ['sad', {{sad}}],
+  ['Neutral', {{neutral}}],
+  ['angry', {{angry}}],
+  ['suprise', {{suprise}}]
+]);
+var data1 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes1}}],
+['no', {{no1}}]
+]);
+var data2 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes2}}],
+['no', {{no2}}]
+]);
+var data3 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes3}}],
+['no', {{no3}}]
+]);
+var data4 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes4}}],
+['no', {{no4}}]
+]);
+var data5 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes5}}],
+['no', {{no5}}],
+['maybe', {{maybe5}}]
+]);
+var data6 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes7}}],
+['no', {{no7}}],
+['maybe', {{maybe7}}]
+]);
+var data7 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes9}}],
+['no', {{no9}}]
+]);
+
+var data8 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['excellent', {{excellent}}],
+['good', {{good}}],
+['satisfactory', {{satisfactory}}],
+['poor', {{poor}}],
+['very poor',{{verypoor}}]
+]);
+var data9 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['positive', {{positive}}],
+['negative', {{negative}}],
+['neutral', {{neutral1}}]
+
+]);
+  // Optional; add a title and set the width and height of the chart
+  var options = {'width':350, 'height':300};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
+  chart2.draw(data1, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart3'));
+  chart2.draw(data2, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart4'));
+  chart2.draw(data3, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart5'));
+  chart2.draw(data4, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart6'));
+  chart2.draw(data5, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart7'));
+  chart2.draw(data6, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart8'));
+  chart2.draw(data7, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart9'));
+  chart2.draw(data8, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart10'));
+  chart2.draw(data9, options);
+{% endifequal %}
+{% ifequal ptype 'tech' %}
+  var data = google.visualization.arrayToDataTable([
+  ['Reactions', 'Count'],
+  ['happy', {{happy}}],
+  ['sad', {{sad}}],
+  ['Neutral', {{neutral}}],
+  ['angry', {{angry}}],
+  ['suprise', {{suprise}}]
+]);
+var data1 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes1}}],
+['no', {{no1}}]
+]);
+var data2 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes2}}],
+['no', {{no2}}]
+]);
+var data3 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['design', {{design}}],
+['features', {{features}}],
+['both', {{both}}]
+]);
+var data4 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes4}}],
+['no', {{no4}}]
+]);
+var data5 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['one', {{one}}],
+['two', {{two}}],
+['three', {{three}}],
+['four', {{four}}],
+['five', {{five}}]
+]);
+var data6 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes7}}],
+['no', {{no7}}]
+
+]);
+
+
+var data7 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['excellent', {{excellent}}],
+['good', {{good}}],
+['satisfactory', {{satisfactory}}],
+['poor', {{poor}}],
+['very poor',{{verypoor}}]
+]);
+var data8 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['positive', {{positive}}],
+['negative', {{negative}}],
+['neutral', {{neutral1}}]
+
+]);
+  // Optional; add a title and set the width and height of the chart
+  var options = {'width':350, 'height':300};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
+  chart2.draw(data1, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart3'));
+  chart2.draw(data2, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart4'));
+  chart2.draw(data3, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart5'));
+  chart2.draw(data4, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart6'));
+  chart2.draw(data5, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart7'));
+  chart2.draw(data6, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart8'));
+  chart2.draw(data7, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart9'));
+  chart2.draw(data8, options);
+
+{% endifequal %}
+
+{% ifequal ptype 'clothes' %}
+  var data = google.visualization.arrayToDataTable([
+  ['Reactions', 'Count'],
+  ['happy', {{happy}}],
+  ['sad', {{sad}}],
+  ['Neutral', {{neutral}}],
+  ['angry', {{angry}}],
+  ['suprise', {{suprise}}]
+]);
+var data1 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes1}}],
+['no', {{no1}}]
+]);
+var data2 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes2}}],
+['no', {{no2}}]
+]);
+var data3 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes3}}],
+['no', {{no3}}]
+]);
+var data4 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes4}}],
+['no', {{no4}}]
+]);
+var data5 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes7}}],
+['no', {{no7}}]
+]);
+var data6 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{summer}}],
+['no', {{winter}}]
+]);
+
+var data7 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['excellent', {{excellent}}],
+['good', {{good}}],
+['satisfactory', {{satisfactory}}],
+['poor', {{poor}}],
+['very poor',{{verypoor}}]
+]);
+var data8 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['positive', {{positive}}],
+['negative', {{negative}}],
+['neutral', {{neutral1}}]
+
+]);
+  // Optional; add a title and set the width and height of the chart
+  var options = {'width':350, 'height':300};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
+  chart2.draw(data1, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart3'));
+  chart2.draw(data2, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart4'));
+  chart2.draw(data3, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart5'));
+  chart2.draw(data4, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart6'));
+  chart2.draw(data5, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart7'));
+  chart2.draw(data6, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart8'));
+  chart2.draw(data7, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart9'));
+  chart2.draw(data8, options);
+{% endifequal %}
+{% ifequal ptype 'sports' %}
+  var data = google.visualization.arrayToDataTable([
+  ['Reactions', 'Count'],
+  ['happy', {{happy}}],
+  ['sad', {{sad}}],
+  ['Neutral', {{neutral}}],
+  ['angry', {{angry}}],
+  ['suprise', {{suprise}}]
+]);
+var data1 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes1}}],
+['no', {{no1}}]
+]);
+var data2 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes2}}],
+['no', {{no2}}]
+]);
+var data3 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes4}}],
+['no', {{no4}}],
+['maybe', {{maybe4}}]
+]);
+var data4 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['1', {{one}}],
+['2', {{two}}],
+['3', {{three}}],
+['4', {{four}}],
+['5', {{five}}]
+]);
+var data5 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['yes', {{yes9}}],
+['no', {{no9}}]
+]);
+
+var data7 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['excellent', {{excellent}}],
+['good', {{good}}],
+['satisfactory', {{satisfactory}}],
+['poor', {{poor}}],
+['very poor',{{verypoor}}]
+]);
+var data8 = google.visualization.arrayToDataTable([
+['Reactions', 'Count'],
+['positive', {{positive}}],
+['negative', {{negative}}],
+['neutral', {{neutral1}}]
+
+]);
+  // Optional; add a title and set the width and height of the chart
+  var options = {'width':375, 'height':300};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
+  chart2.draw(data1, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart3'));
+  chart2.draw(data2, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart4'));
+  chart2.draw(data3, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart5'));
+  chart2.draw(data4, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart6'));
+  chart2.draw(data5, options);
+
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart8'));
+  chart2.draw(data7, options);
+  var chart2 = new google.visualization.PieChart(document.getElementById('piechart9'));
+  chart2.draw(data8, options);
+{% endifequal %}
+
+
+}
+
+
+</script>
+</body>
+</html>

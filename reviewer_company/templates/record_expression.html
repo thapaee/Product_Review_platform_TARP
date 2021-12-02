@@ -1,0 +1,220 @@
+<html>
+<head>
+<style>
+body{
+  margin:0;
+  background: #0f8a9d;
+    background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+}
+.navigation{
+width:15%;
+height:100%;
+position:fixed;
+margin: 0;
+border-right:solid gray;
+}
+.navigation button{
+  width:100%;
+  border:none;
+  display:inline-block;
+  padding:15px;
+  background-color:transparent;
+  font-size: 20px;
+  font-weight: bolder;
+
+}
+.navigation button:hover{
+   background-color:black;
+   color:white;
+}
+.top{
+  margin-left:15%;
+}
+
+.round{
+  width:200px;
+  height:200px;
+  border-radius: 50%;
+  background-color: red;
+  background-image: url('/media/images/review.jpg');
+}
+.count{
+    text-align:center;
+    font-size:50px;
+    font-weight:bolder;
+
+}
+table{
+  width:100%;
+}
+.mySlides {display: none;}
+
+/* Slideshow container */
+.slideshow-container {
+  width: 500px;
+  height:160px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: black;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+input{
+  font-size:30px;
+}
+</style>
+</head>
+<body>
+
+<div class="navigation">
+  <div class="round">
+  </div>
+  <a href="{% url 'overview_reviewer' %}"><button>Overview</button></a>
+  <a href="{% url 'view_products' %}"><button style="background-color:black;color:white;">Product review</button></a>
+  <a href="{% url 'incentives' %}"><button>Incentives</button></a>
+  <a href="#"><button>Profile</button></a>
+  <a href="{% url 'signout' %}"><button>Sign Out</button></a>
+</div>
+
+<div class="top"><center><h2 id="ttt">Start the process for {{pname}}</h2></center><hr></div>
+<div style="margin-left:18%;font-size:20px;font-weight:bold;background-color:white;" id="con">
+  <center><h2 style="background-color:powderblue;">Read before you start<hr></h2></center>
+  <ol>
+    <li>Press start to start the process</li>
+<li>Please note that by clicking start you give us permission to access your webcam</li>
+<li>The first part of review will just display the pictures</li>
+  <li>Be patient and analyze the picture until you are redirected to questions page</li>
+</ol>
+<center>
+  <br>
+  <br>
+
+<form action="{% url 'act' %}" method="POST" onsubmit="de()" id="h">
+  <input type="hidden" value="{{pid}}" name="pid">
+  <input type="hidden" value="{{ptype}}" name="ptype">
+
+<a href="{% url 'view_products' %}"><button style="font-size:25px;" type="button">Cancel</button></a>
+  <input type="submit" value="start" style="background-color:powderblue;">
+</form>
+</center>
+</div>
+<div style="margin-left:1%;display:none;" id="hello">
+  <div class="slideshow-container">
+
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <img src="{{p.image1.url}}" style="width: 800px;height:600px;">
+    <div class="text">Caption Text</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <img src="{{p.image2.url}}" style="width: 800px;height:600px;">
+    <div class="text"></div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <img src="{{p.image3.url}}" style="width: 800px;height:600px;">
+    <div class="text"></div>
+  </div>
+
+  </div>
+  <br>
+
+  <div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div><br>
+
+</div>
+<div style="margin-left:18%;">
+
+</div>
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 8000); // Change image every 2 seconds
+}
+function de(){
+   document.getElementById("h").style.display="none";
+   document.getElementById("con").style.display="none";
+   document.getElementById("hello").style.display="block";
+   document.getElementById("ttt").innerHTML="Your response is being recorded...You will shortly be redirected.";
+
+}
+</script>
+
+</body>
+</html>

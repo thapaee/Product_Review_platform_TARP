@@ -1,0 +1,167 @@
+<html>
+<head>
+<style>
+body{
+  margin:0;
+  background: #0f8a9d;
+    background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+}
+.navigation{
+width:15%;
+height:100%;
+position:fixed;
+margin: 0;
+border-right:solid gray;
+}
+.navigation button{
+  width:100%;
+  border:none;
+  display:inline-block;
+  padding:15px;
+  background-color:transparent;
+  font-size: 20px;
+  font-weight: bolder;
+
+}
+.navigation button:hover{
+   background-color:black;
+   color:white;
+   cursor:pointer;
+}
+.top{
+  margin-left:15%;
+}
+table{
+  width:100%;
+}
+.round{
+  width:200px;
+  height:200px;
+  border-radius: 50%;
+  background-color: red;
+  background-image: url('/media/images/cause.jpg');
+}
+.form{
+ margin-left:18%;
+ background-color:white;
+ width:500px;
+ height:790px;
+ box-shadow:0px 10px 10px gray;
+ float:left;
+}
+.formm{
+ margin-left:1%;
+ background-color:white;
+ width:500px;
+ height:550px;
+ box-shadow:0px 10px 10px gray;
+ float:left;
+}
+label,input{
+  font-size: 16px;
+
+}
+.t{
+  background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+  cursor:pointer;
+  width:30%;
+
+  font-weight:bold;
+}
+.t:hover{
+  background: linear-gradient(57deg, #1E4D92, #00C6A7 );
+}
+td{
+
+  padding:4px;
+
+}
+</style>
+</head>
+<body>
+
+<div class="navigation">
+  <div class="round">
+  </div>
+  <a href="{% url 'overview_company' %}"><button>Overview</button></a>
+    <a href="{% url 'upload' %}"><button style="background-color:black;color:white;">Add product</button></a>
+    <a href="{% url 'company_reports' %}"><button>Results</button></a>
+    <a href="{% url 'company_profile' %}"><button>Profile</button></a>
+    <a href="{% url 'signout' %}"><button>Sign Out</button></a>
+</div>
+
+<div class="top"><center><h2>Welcore on board!!</h2></center><hr></div>
+<div class="form">
+  <h2 style="background-color:powderblue;"><center>Please enter the details of the product to be uploaded<hr></h2>
+<form action="{% url 's' %}" method="POST" enctype="multipart/form-data">
+<table>
+{% ifequal x 'sports' %}
+<label>1. Is it for indoor sports or outdoor sports?</label><br><input type='radio' name='1' value='indoor'>indoor<input type='radio' name='1' value='outdoor'>outdoor<br>
+<br><label>2. Can it be used by both professionals and the public?</label><br><input type='radio' name='2' value='yes'>yes<input type='radio' name='2' value='no'>no<br>
+<label>3. Does it give boost to a atheletes ability?</label><br><input type='radio' name='3' value='yes'>yes<input type='radio' name='3' value='no'>no
+<br><label>4. Can the product be used for child games?</label><br><input type='radio' name='4' value='yes'>yes<input type='radio' name='4' value='no'>no
+<br><label>5. Mention the most appelaing characteristics of your product that can help the sports community to be more better</label><br><textarea rows=3 cols=50 name='5'></textarea>
+<br><label>6. Has any sports personality has suggested you to develop this product?If yes, give his/her name?</label><br><textarea rows=3 cols=50 name='6'></textarea>
+<br><label>7. Can you list this type of products that you have launched before?</label><br><textarea name='7' rows=3 cols=50></textarea>
+<br><label>8. Give some additional inforfation about the product?</label><br><textarea name='8' rows=3 cols=50></textarea>
+{% endifequal %}
+{% ifequal x 'clothes' %}
+<label>1. Choose the gender your product is for</label><br><input type='radio' name='1' value='male'>male<input type='radio' name='1' value='female'>female<input type='radio' name='1' value='both'>Both<br>
+<br><label>2. Choose the age group it is for:</label><br><input type='radio' name='2' value='children'>Children<input type='radio' name='2' value='youth'>Youth<input type='radio' name='2' value='Old age'>Old<br>
+<label>3. Choose the material it is made from?</label><br><input type='radio' name='3' value='cotton'>cotton<input type='radio' name='3' value='silk'>silk<input type='radio' name='3' value='wool'>wool<input type='radio' name='3' value='polyester'>polyester
+<br><label>4. In what sizes are the product available?</label><br><textarea rows=3 cols=50 name='4'></textarea>
+<br><label>5. Mention the most appelaing characteristics of your product.</label><br><textarea rows=3 cols=50 name='5'></textarea>
+<br><label>6. What was the inspiration for this product? Were you inspired by some celebrity?</label><br><textarea rows=3 cols=50 name='6'></textarea>
+<br><label>7. Can you list this type of products that you have launched before?</label><br><textarea name='7' rows=3 cols=50></textarea>
+<br><label>8. Give some additional inforfation about the product?</label><br><textarea name='8' rows=3 cols=50></textarea>
+{% endifequal %}
+{% ifequal x 'vechile' %}
+<label>1. Choose the type of vechile?</label><br><input type='radio' name='1' value='2'>2 wheeler<input type='radio' name='1' value='4'>4 wheeler
+<br><label>2.Specipfy the cc of the engine?</label><br><textarea rows=3 cols=50 name='2'></textarea><br>
+<label>3. Specipfy the fuel capacity of the engine in litres?</label><br><input type='number' name='3' value='cap'>
+<br><label>4. In which colors is it available?</label><br><textarea rows=3 cols=50 name='4'></textarea>
+<br><label>5. Mention the distinguishing featur of the vechile.</label><br><textarea rows=3 cols=50 name='5'></textarea>
+<br><label>6. Is it suitable for both long rides and city rides?</label><br><input type='radio' name='6' value='long'>Long rides<input type='radio' name='6' value='city'>city rides<input type='radio' name='6' value='both'>Both
+<br><label>7. Can you list this type of products that you have launched before?</label><br><textarea name='7' rows=3 cols=50></textarea>
+<br><label>8. Give some additional information about the vechile(such as electric\fuel)?</label><br><textarea name='8' rows=3 cols=50></textarea>
+{% endifequal %}
+{% ifequal x 'tech' %}
+<label>1. Is the product completely new model or upgrade to previous version?</label><br><input type="radio" name="1" value="New Model">New<input type="radio" name="1" value="Upgrade to previous version">Upgrade to previous version
+<br><label>2. On which OS does the product run?</label><br><input type='radio' name='2' value='IOS'>IOS<input type='radio' name='2' value='Android'>Android<input type='radio' name='2' value='Windows'>Windows<input type='radio' name='2' value='Company Specific'>Os specially developed for the product<br>
+<label>3.Give facts on it's power consumption/Battery.</label><br><textarea rows=3 cols=50 name='3'></textarea>
+<br><label>4. Can the decvice be connected to and controlled by other devices?</label><br><textarea name="4"></textarea>
+<br><label>5. Mention the most appelaing characteristics of your product.</label><br><textarea rows=3 cols=50 name='5'></textarea>
+<br><label>6. Have you introduced any new technology in this product?</label><br><input type="radio" name="6" value="yes">Yes<input type="radio" name="6" value="No">No
+<br><label>7. If your answer was yes to previous question, give some information about the tech else describe what have you improved on already existing technology?</label><br><textarea name='7' rows=3 cols=50></textarea>
+<br><label>8. Give the full specifications of your product.</label><br><textarea name='8' rows=3 cols=50></textarea>
+{% endifequal %}
+{% ifequal x 'food' %}
+<label>1. Choose the type of food?</label><br><input type='radio' name='1' value='sweet'>sweet<input type='radio' name='1' value='sour'>sour<input type='radio' name='1' value='spicy'>spicy<input type='radio' name='1' value='salty'>salty
+<br><label>2. Mention the Calorific stats of the food item:</label><br><textarea rows=3 cols=50 name='2'></textarea><br>
+<label>3. Specipfy the type of preseratives used?</label><br><textarea rows=3 cols=50 name='3'></textarea>
+<br><label>4. Is it based on some type of traditional food?</label><br><input type='radio' name='4' value='yes'>yes<input type='radio' name='4' value='no'>no<br>
+<br><label>5. Mention the speciality of your product.</label><br><textarea rows=3 cols=50 name='5'></textarea>
+<br><label>6. Is the product vegan?</label><br><input type='radio' name='6' value='yes'>yes<input type='radio' name='6' value='no'>no<br>
+<br><label>7. Can you list this type of products that you have launched before?</label><br><textarea name='7' rows=3 cols=50></textarea>
+<br><label>8. Give some additional information about the food item(such as expriy time)?</label><br><textarea name='8' rows=3 cols=50></textarea>
+{% endifequal %}
+</table>
+<br> Upload Three Pictures of the product<br>
+<input type="file" name="image1">
+<br><input type="file" name="image2"><br>
+<input type="file" name="image3">
+<input type='hidden' name="title" value="{{title}}">
+<input type='hidden' name="des" value="{{description}}">
+<input type='hidden' name="type" value="{{x}}">
+<br><br>
+<center>
+<a href="{%url 'overview_company'%}"><button style="background-color:red;width:20%;font-weight:bold;" type="button">Cancel</button></a> &nbsp;&nbsp;<input type='submit' class="t" value='Upload product'>
+</center>
+</form>
+</div>
+
+
+
+
+</body>
+</html>

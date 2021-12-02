@@ -1,0 +1,126 @@
+<html>
+<head>
+<style>
+body{
+  margin:0;
+  background: #0f8a9d;
+      background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+}
+a{
+  text-decoration: :none;
+}
+.navigation{
+width:15%;
+height:100%;
+position:fixed;
+margin: 0;
+border-right:solid gray;
+}
+.navigation button{
+  width:100%;
+  border:none;
+  display:inline-block;
+  padding:15px;
+  background-color:transparent;
+  font-size: 20px;
+  font-weight: bolder;
+
+}
+.navigation button:hover{
+   background-color:black;
+   color:white;
+   cursor:pointer;
+}
+.top{
+  margin-left:15%;
+}
+.round{
+  width:200px;
+  height:200px;
+  border-radius: 50%;
+  background-color: red;
+  background-image: url('/media/images/review.jpg');
+}
+
+
+table{
+  width:100%;
+}
+li{
+  font-size:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="navigation">
+  <div class="round">
+  </div>
+    <a href="{% url 'overview_reviewer' %}"><button >Overview</button></a>
+    <a href="{% url 'view_products' %}"><button>Product review</button></a>
+    <a href="{% url 'incentives' %}"><button>Incentives</button></a>
+    <a href="{% url 'reviewer_profile' %}"><button style="background-color:black;color:white;">Profile</button></a>
+    <a href="{% url 'signout' %}"><button>Sign Out</button></a>
+</div>
+
+<div class="top"><center><h2>{{request.session.name}} , Check your profile</h2></center><hr></div>
+<div style="margin-left:18%;background-color:white;display:inline-block;width:50%;">
+
+  {% if p == 2 %}
+     <span style="padding-left:20px;color:red;">
+     {{message}}
+    </span>
+
+
+  {% endif %}
+  {% if p == 1 %}
+     <span style="padding-left:20px;color:green;">
+     {{message}}
+    </span>
+
+
+  {% endif %}
+<table>
+  <tr>
+     <td colspan=2 style="background-color:powderblue;"><center>Profile</center></td>
+  </tr>
+  <tr>
+    <td class="la">Name:</td>
+    <td>{{request.session.name}}</td>
+  </tr>
+  <tr>
+    <td class="la">Product reviewed:</td>
+    <td>{{ ii }}</td>
+  </tr>
+  <tr>
+    <td class="la">Incentives:</td>
+    <td>{{ ii }}</td>
+  </tr>
+  <tr>
+    <td class="la">Protduct type:</td>
+    <td>{{type}}</td>
+  </tr>
+  <tr>
+     <td colspan=2 style="background-color:powderblue;"><center>Password</center></td>
+  </tr>
+  <tr><form action="{% url 'reviewer_profile' %}" method="POST">
+    <td class="la">Current Password:</td>
+    <td><input type="password" name="pwd"></td>
+  </tr>
+  <tr>
+    <td class="la">New Password:</td>
+    <td><input type="password" name="repwd"></td>
+  </tr>
+  <tr>
+    <td class="la">Re-enter New Password:</td>
+    <td><input type="password" name="repwd"></td>
+  </tr>
+  <tr>
+     <td colspan=2 ><center><input type="hidden" name="id" value="{{request.session.user}}"><input type="submit" value="Change Password"></center></td></form>
+  </tr>
+</table>
+
+</div>
+
+</body>
+</html>

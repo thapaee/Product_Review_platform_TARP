@@ -1,0 +1,113 @@
+<html>
+<head>
+<style>
+body{
+  margin:0;
+  background: #0f8a9d;
+    background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+}
+.navigation{
+width:15%;
+height:100%;
+position:fixed;
+margin: 0;
+border-right:solid gray;
+}
+.navigation button{
+  width:100%;
+  border:none;
+  display:inline-block;
+  padding:15px;
+  background-color:transparent;
+  font-size: 20px;
+  font-weight: bolder;
+
+}
+.navigation button:hover{
+   background-color:black;
+   color:white;
+}
+.top{
+  margin-left:15%;
+}
+.docno{
+  margin-left:18%;
+  background-color:rgb(255,255,240);
+  width:250px;
+  height:200px;
+  margin-top: 2%;
+  float:left;
+  display:inline-block;
+
+  box-shadow:0px 10px 10px gray;
+}
+.patientno{
+  margin-left:5%;
+  background-color:white;
+  width:250px;
+  height:200px;
+  margin-top: 2%;
+  float:left;
+  display:block;
+  box-shadow:0px 10px 10px gray;
+}
+.round{
+  width:200px;
+  height:200px;
+  border-radius: 50%;
+  background-color: red;
+  background-image: url('/media/images/review.jpg');
+}
+.doctable{
+  clear:both;
+  margin-left:18%;
+  background-color: white;
+  width: 500px;
+  height: 300px;
+  margin-top: 2%;
+  float:left;
+  display:inline-block;
+  box-shadow:0px 10px 10px gray;
+}
+.patienttable{
+  margin-left:2%;
+  background-color: white;
+  width: 500px;
+  height: 300px;
+  margin-top: 2%;
+  float:left;
+  display:inline-block;
+  box-shadow:0px 10px 10px gray;
+
+}
+.count{
+    text-align:center;
+    font-size:50px;
+    font-weight:bolder;
+
+}
+table{
+  width:100%;
+}
+</style>
+</head>
+<body>
+
+<div class="navigation">
+  <div class="round">
+  </div>
+  <a href="{% url 'overview_reviewer' %}"><button>Overview</button></a>
+  <a href="{% url 'view_products' %}"><button>Product review</button></a>
+  <a href="{% url 'incentives' %}"><button>Incentives</button></a>
+  <a href="{% url 'reviewer_profile' %}"><button>Profile</button></a>
+  <a href="{% url 'signout' %}"><button>Sign Out</button></a>
+</div>
+
+<div class="top"><center><h2>Thanks for the review!!</h2></center><hr></div>
+
+<div style="margin-left:32%;margin-top:8%;font-size:30px;background-color:white;width:700px;color:darkgreen;">
+<center>  Your review has been sucessfully recorded.<br>We would like to remind you that<br><u>"Every review counts"</u><br><br><br>
+  <a href="{% url 'view_products' %}"><button style="font-size:30px;background-color:powderblue;">Review other products</button></a>&nbsp;&nbsp;<a href="{% url 'overview_reviewer' %}"><button style="font-size:30px;">Head back to Overview</button></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<html>
+<head>
+<style>
+body{
+  margin:0;
+  background: #0f8a9d;
+    background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+}
+.navigation{
+width:15%;
+height:100%;
+position:fixed;
+margin: 0;
+border-right:solid gray;
+}
+.navigation button{
+  width:100%;
+  border:none;
+  display:inline-block;
+  padding:15px;
+  background-color:transparent;
+  font-size: 20px;
+  font-weight: bolder;
+
+}
+.navigation button:hover{
+   background-color:black;
+   color:white;
+}
+.top{
+  margin-left:15%;
+}
+.round{
+  width:200px;
+  height:200px;
+  border-radius: 50%;
+  background-color: red;
+  background-image: url('/media/images/review.jpg');
+}
+.questions{
+  margin-left:18%;
+  background-color:white;
+  display:inline-block;
+}
+label{
+   font-size:20px;
+}
+table,td,tr{
+  border:1px solid black;
+}
+</style>
+</head>
+<body>
+
+<div class="navigation">
+  <div class="round">
+  </div>
+  <a href="{% url 'overview_reviewer' %}"><button>Overview</button></a>
+  <a href="{% url 'view_products' %}"><button style="background-color:black;color:white;">Product review</button></a>
+  <a href="{% url 'incentives' %}"><button>Incentives</button></a>
+  <a href="#"><button>Profile</button></a>
+  <a href="{% url 'signout' %}"><button>Sign Out</button></a>
+</div>
+
+<div class="top"><center><h2>{{request.session.name}}, Please find some information about the product below</h2></center><hr></div>
+
+<div class="questions" style="margin-left:18%;">
+  <center><h1 style="background-color:powderblue;margin:0;">Relevant Information<br><hr></h1></center>
+  <form method="POST" action="{% url 'read_description' %}">
+    <input type="hidden" value="{{pid}}" name="pid">
+    <input type="hidden" value="{{ptype}}" name="ptype">
+    <input type="hidden" value="{{reaction}}" name="reaction">
+    {% ifequal ptype 'sports' %}
+    <table>
+      <tr>
+        <td>Indoor/Outdoor game</td>
+        <td>{{p.question1}}</td>
+      </tr>
+      <tr>
+         <td>For professional use /public use</td>
+         <td>{{p.question2}}</td>
+      </tr>
+      <tr>
+        <td>Sporting Ability Enhancement<br> for user</td>
+        <td>{{p.question3}}</td>
+      </tr>
+      <tr>
+        <td>Safe for Children?</td>
+        <td>{{p.question4}}</td>
+      </tr>
+      <tr>
+        <td>Most appealing feature</td>
+        <td>{{p.question5}}</td>
+      </tr>
+      <tr>
+        <td>Partnership with any sports<br> personality for the product</td>
+        <td>{{p.question6}}</td>
+      </tr>
+      <tr>
+        <td>Similar products released<br> by company</td>
+        <td>{{p.question7}}</td>
+      </tr>
+      <tr>
+        <td>Additional Information</td>
+        <td>{{p.question8}}</td>
+      </tr>
+      </table>
+
+
+    {% endifequal %}
+    {% ifequal ptype 'clothes' %}
+    <table>
+      <tr>
+        <td>Gender preference:</td>
+        <td>{{p.question1}}</td>
+      </tr>
+      <tr>
+         <td>For age group</td>
+         <td>{{p.question2}}</td>
+      </tr>
+      <tr>
+        <td>Made from</td>
+        <td>{{p.question3}}</td>
+      </tr>
+      <tr>
+        <td>Available sizes</td>
+        <td>{{p.question4}}</td>
+      </tr>
+      <tr>
+        <td>Most appealing feature</td>
+        <td>{{p.question5}}</td>
+      </tr>
+      <tr>
+        <td>Partnership with any <br> celibrity for the design</td>
+        <td>{{p.question6}}</td>
+      </tr>
+      <tr>
+        <td>Similar products released<br> by company</td>
+        <td>{{p.question7}}</td>
+      </tr>
+      <tr>
+        <td>Additional Information</td>
+        <td>{{p.question8}}</td>
+      </tr>
+      </table>
+
+
+    {% endifequal %}
+    {% ifequal ptype 'vechile' %}
+    <table>
+      <tr>
+        <td>Type of vechile</td>
+        <td>{{p.question1}} wheeler</td>
+      </tr>
+      <tr>
+         <td>CC of engine</td>
+         <td>{{p.question2}}</td>
+      </tr>
+      <tr>
+        <td>Fuel Capacity</td>
+        <td>{{p.question3}} litre</td>
+      </tr>
+      <tr>
+        <td>Available Colors</td>
+        <td>{{p.question4}}</td>
+      </tr>
+      <tr>
+        <td>Most appealing feature</td>
+        <td>{{p.question5}}</td>
+      </tr>
+      <tr>
+        <td>Suitable for long or <br> city rides</td>
+        <td>{{p.question6}}</td>
+      </tr>
+      <tr>
+        <td>Similar products released<br> by company</td>
+        <td>{{p.question7}}</td>
+      </tr>
+      <tr>
+        <td>Additional Information</td>
+        <td>{{p.question8}}</td>
+      </tr>
+      </table>
+
+
+    {% endifequal %}
+    {% ifequal ptype 'tech' %}
+    <table>
+      <tr>
+        <td>New or upgrade to previous version</td>
+        <td>{{p.question1}}</td>
+      </tr>
+      <tr>
+         <td>OS of the product</td>
+         <td>{{p.question2}}</td>
+      </tr>
+      <tr>
+        <td>Power consumption/Battery</td>
+        <td>{{p.question3}}</td>
+      </tr>
+      <tr>
+        <td>Device connection features</td>
+        <td>{{p.question4}}</td>
+      </tr>
+      <tr>
+        <td>Most appealing feature</td>
+        <td>{{p.question5}}</td>
+      </tr>
+      <tr>
+        <td>Any new technology used</td>
+        <td>{{p.question6}}</td>
+      </tr>
+      <tr>
+        <td>Describe about the new technology/<br>improved technology</td>
+        <td>{{p.question7}}</td>
+      </tr>
+      <tr>
+        <td>Product Specifications</td>
+        <td>{{p.question8}}</td>
+      </tr>
+      </table>
+
+
+    {% endifequal %}
+    {% ifequal ptype 'food' %}
+    <table>
+      <tr>
+        <td>Type according to taste</td>
+        <td>{{p.question1}}</td>
+      </tr>
+      <tr>
+         <td>Calorific stats</td>
+         <td>{{p.question2}}</td>
+      </tr>
+      <tr>
+        <td>Preservatives used</td>
+        <td>{{p.question3}}</td>
+      </tr>
+      <tr>
+        <td>Traditional food</td>
+        <td>{{p.question4}}</td>
+      </tr>
+      <tr>
+        <td>Speciality</td>
+        <td>{{p.question5}}</td>
+      </tr>
+      <tr>
+        <td>Vegan</td>
+        <td>{{p.question6}}</td>
+      </tr>
+      <tr>
+        <td>Similar type of<br>food items by company</td>
+        <td>{{p.question7}}</td>
+      </tr>
+      <tr>
+        <td>Additional Information</td>
+        <td>{{p.question8}}</td>
+      </tr>
+      </table>
+
+
+    {% endifequal %}
+
+    <br>
+
+
+<br><a href="{% url 'view_products' %}"><button style="font-size:25px;" type="button">Cancel</button></a><input type="submit" value="Next" style="font-size:25px;background-color:powderblue;">
+  </form>
+</div>
+</body>
+</html>

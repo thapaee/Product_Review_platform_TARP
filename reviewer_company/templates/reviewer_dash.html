@@ -1,0 +1,143 @@
+<html>
+<head>
+<style>
+body{
+  margin:0;
+  background: #0f8a9d;
+    background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+}
+a{
+  text-decoration: :none;
+}
+.navigation{
+width:15%;
+height:100%;
+position:fixed;
+margin: 0;
+border-right:solid gray;
+}
+.navigation button{
+  width:100%;
+  border:none;
+  display:inline-block;
+  padding:15px;
+  background-color:transparent;
+  font-size: 20px;
+  font-weight: bolder;
+
+}
+.navigation button:hover{
+   background-color:black;
+   color:white;
+   cursor:pointer;
+}
+.top{
+  margin-left:15%;
+}
+.docno{
+  margin-left:18%;
+  background-color:rgb(255,255,240);
+  width:250px;
+  height:200px;
+  margin-top: 2%;
+  float:left;
+  display:inline-block;
+
+  box-shadow:0px 10px 10px gray;
+}
+.patientno{
+  margin-left:5%;
+  background-color:white;
+  width:250px;
+  height:200px;
+  margin-top: 2%;
+  float:left;
+  display:block;
+  box-shadow:0px 10px 10px gray;
+}
+.round{
+  width:200px;
+  height:200px;
+  border-radius: 50%;
+  background-color: red;
+  background-image: url('/media/images/review.jpg');
+}
+.doctable{
+  clear:both;
+  margin-left:18%;
+  background-color: white;
+  width: 500px;
+  height: 300px;
+  margin-top: 2%;
+  float:left;
+  display:inline-block;
+  box-shadow:0px 10px 10px gray;
+}
+.patienttable{
+  margin-left:2%;
+  background-color: white;
+  width: 500px;
+  height: 300px;
+  margin-top: 2%;
+  float:left;
+  display:inline-block;
+  box-shadow:0px 10px 10px gray;
+
+}
+.count{
+    text-align:center;
+    font-size:50px;
+    font-weight:bolder;
+
+}
+table{
+  width:100%;
+}
+li{
+  font-size:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="navigation">
+  <div class="round">
+  </div>
+    <a href="{% url 'overview_reviewer' %}"><button style="background-color:black;color:white;">Overview</button></a>
+    <a href="{% url 'view_products' %}"><button>Product review</button></a>
+    <a href="{% url 'incentives' %}"><button>Incentives</button></a>
+    <a href="{% url 'reviewer_profile' %}"><button>Profile</button></a>
+    <a href="{% url 'signout' %}"><button>Sign Out</button></a>
+</div>
+
+<div class="top"><center><h2>Welcore on board!!{{request.session.name}}</h2></center><hr></div>
+
+<div class="docno">
+<center><h3 style="background-color:powderblue;margin:0;padding-top:5px;">Reviews Available<hr></h3></center>
+<center><span style="font-size:100px;">{{review_no}}</span></center>
+</div>
+<div class="patientno"><center><h3 style="background-color:powderblue;margin:0;padding-top:5px;">Incentives Gathered<hr></h3></center>
+<center><span style="font-size:100px;">{{incentive_no}}</span></center>
+</div>
+
+<div class="doctable">
+<center><h3 style="background-color:powderblue;margin:0;padding-top:5px;">Guidelines<hr></h3></center>
+<ol>
+  <li>We request you to be yourself during the review process</li>
+  <li>Please head to product review section to check the products available for review.</li>
+  <li>We humbly request you to check the incentives section for the incentive you received</li>
+</ol>
+
+
+</div>
+<div class="patienttable">
+<center><h3 style="background-color:red;margin:0;padding-top:5px;color:white;">Warning<hr></h3></center>
+<ol>
+  <li>The review provided must be genunie</li>
+  <li>The incentives provided can be cancelled if any suspicious activity found</li>
+  <li>Do not contact the company directly regarding the products</li>
+  <li>If you face any problem, contact us at abc@xyz.com</li>
+</ol>
+</div>
+</body>
+</html>

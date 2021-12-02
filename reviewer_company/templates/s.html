@@ -1,0 +1,153 @@
+<html>
+<head>
+
+<script type="text/javascript">
+    function ShowHideDiv() {
+        var t="<label>1. Is it for indoor sports or outdoor sports?</label><br><input type='radio' name='1' value='indoor'>indoor<input type='radio' name='1' value='outdoor'>outdoor<br>";
+        t+="<br><label>2. Can it be used by both professionals and the public?</label><br><input type='radio' name='2' value='yes'>yes<input type='radio' name='2' value='no'>no<br>";
+        t+="<label>3. Does it give boost to a atheletes ability?</label><br><input type='radio' name='3' value='yes'>yes<input type='radio' name='3' value='no'>no";
+        t+="<br><label>4. Can the product be used for child games?</label><br><input type='radio' name='4' value='yes'>yes<input type='radio' name='4' value='no'>no";
+        t+="<br><label>5. Mention the most appelaing characteristics of your product that can help the sports community to be more better</label><br><textarea rows=3 cols=50 name='5'></textarea>";
+        t+="<br><label>6. Has any sports personality has suggested you to develop this product?If yes, give his/her name?</label><br><textarea rows=3 cols=50 name='6'></textarea>";
+        t+="<br><label>7. Can you list this type of products that you have launched before?</label><br><textarea name='7' rows=3 cols=50></textarea>";
+        t+="<br><label>8. Give some additional inforfation about the product?</label><br><textarea name='8' rows=3 cols=50></textarea>";
+        t+="<br><input type='submit' value='Upload product'>";
+        document.getElementById("mod").innerHTML=t;
+    }
+
+    function ShowHideDivClothes() {
+        var t="<label>1. Choose the gender your product is for</label><br><input type='radio' name='1' value='male'>male<input type='radio' name='1' value='female'>female<input type='radio' name='1' value='both'>Both<br>";
+        t+="<br><label>2. Choose the age group it is for:</label><br><input type='radio' name='2' value='children'>Children<input type='radio' name='2' value='youth'>Youth<input type='radio' name='2' value='Old age'>Old<br>";
+        t+="<label>3. Choose the material it is made from?</label><br><input type='radio' name='3' value='cotton'>cotton<input type='radio' name='3' value='silk'>silk<input type='radio' name='3' value='wool'>wool<input type='radio' name='3' value='polyester'>polyester";
+        t+="<br><label>4. In what sizes are the product available?</label><br><textarea rows=3 cols=50 name='4'></textarea>";
+        t+="<br><label>5. Mention the most appelaing characteristics of your product.</label><br><textarea rows=3 cols=50 name='5'></textarea>";
+        t+="<br><label>6. What was the inspiration for this product? Were you inspired by some celebrity?</label><br><textarea rows=3 cols=50 name='6'></textarea>";
+        t+="<br><label>7. Can you list this type of products that you have launched before?</label><br><textarea name='7' rows=3 cols=50></textarea>";
+        t+="<br><label>8. Give some additional inforfation about the product?</label><br><textarea name='8' rows=3 cols=50></textarea>";
+        t+="<br><input type='submit' value='Upload product'>";
+        document.getElementById("mod").innerHTML=t;
+    }
+    function ShowHideDivTech() {
+        var t="<label>1. Give Specifications for your products?</label><br><textarea name='1'></textarea>";
+        t+="<br><label>2. Is it a upgrade to it's previous model?</label><br><input type='radio' name='2' value='yes'>yes<input type='radio' name='2' value='no'>No<br>";
+        t+="<label>3. Choose the material it is made from?</label><br><input type='radio' name='3' value='cotton'>cotton<input type='radio' name='3' value='silk'>silk<input type='radio' name='3' value='wool'>wool<input type='radio' name='3' value='polyester'>polyester";
+        t+="<br><label>4. In what sizes are the product available?</label><br><textarea rows=3 cols=50 name='4'></textarea>";
+        t+="<br><label>5. Mention the most appelaing characteristics of your product.</label><br><textarea rows=3 cols=50 name='5'></textarea>";
+        t+="<br><label>6. What was the inspiration for this product? Were you inspired by some celebrity?</label><br><textarea rows=3 cols=50 name='6'></textarea>";
+        t+="<br><label>7. Can you list this type of products that you have launched before?</label><br><textarea name='7' rows=3 cols=50></textarea>";
+        t+="<br><label>8. Give some additional inforfation about the product?</label><br><textarea name='8' rows=3 cols=50></textarea>";
+        t+="<br><input type='submit' value='Upload product'>";
+        document.getElementById("mod").innerHTML=t;
+    }
+    function ShowHideDivVechile() {
+        var t="<label>1. Choose the type of vechile?</label><br><input type='radio' name='1' value='2'>2 wheeler<input type='radio' name='1' value='4'>4 wheeler";
+        t+="<br><label>2.Specipfy the cc of the engine?</label><br><textarea rows=3 cols=50 name='2'></textarea><br>";
+        t+="<label>3. Specipfy the fuel capacity of the engine?</label><br><input type='number' name='3' value='cap'>";
+        t+="<br><label>4. In which colors is it available?</label><br><textarea rows=3 cols=50 name='4'></textarea>";
+        t+="<br><label>5. Mention the distinduishing featur of the vechile.</label><br><textarea rows=3 cols=50 name='5'></textarea>";
+        t+="<br><label>6. Is it suitable for both long rides and city rides?</label><br><input type='radio' name='6' value='long'>Long rides<input type='radio' name='6' value='city'>city rides<input type='radio' name='6' value='both'>Both";
+        t+="<br><label>7. Can you list this type of products that you have launched before?</label><br><textarea name='7' rows=3 cols=50></textarea>";
+        t+="<br><label>8. Give some additional information about the vechile?</label><br><textarea name='8' rows=3 cols=50></textarea>";
+        t+="<br><input type='submit' value='Upload product'>";
+        document.getElementById("mod").innerHTML=t;
+    }
+    function ShowHideDivFood() {
+        var t="<label>1. Choose the type of food?</label><br><input type='radio' name='1' value='sweet'>sweet<input type='radio' name='1' value='sour'>sour<input type='radio' name='1' value='spicy'>spicy<input type='radio' name='1' value='salty'>salty";
+        t+="<br><label>2. Mention the Calorific stats of the food item:</label><br><textarea rows=3 cols=50 name='2'></textarea><br>";
+        t+="<label>3. Specipfy the type of preseratives used?</label><br><textarea rows=3 cols=50 name='3'></textarea>";
+        t+="<br><label>4. Is it based on some type of traditional food?</label><br><input type='radio' name='4' value='yes'>yes<input type='radio' name='4' value='no'>no<br>";
+        t+="<br><label>5. Mention the speciality of your product.</label><br><textarea rows=3 cols=50 name='5'></textarea>";
+        t+="<br><label>6. Is the product vegan?</label><br><input type='radio' name='6' value='yes'>yes<input type='radio' name='6' value='no'>no<br>";
+        t+="<br><label>7. Can you list this type of products that you have launched before?</label><br><textarea name='7' rows=3 cols=50></textarea>";
+        t+="<br><label>8. Give some additional information about the food item?</label><br><textarea name='8' rows=3 cols=50></textarea>";
+        t+="<br><input type='submit' value='Upload product'>";
+        document.getElementById("mod").innerHTML=t;
+    }
+</script>
+<style>
+body{
+  margin:0;
+  background: #0f8a9d;
+    background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+}
+.navigation{
+width:15%;
+height:100%;
+position:fixed;
+margin: 0;
+border-right:solid gray;
+}
+.navigation button{
+  width:100%;
+  border:none;
+  display:inline-block;
+  padding:15px;
+  background-color:transparent;
+  font-size: 20px;
+  font-weight: bolder;
+
+}
+.navigation button:hover{
+   background-color:black;
+   color:white;
+   cursor:pointer;
+}
+.top{
+  margin-left:15%;
+}
+table{
+  width:100%;
+}
+.round{
+  width:200px;
+  height:200px;
+  border-radius: 50%;
+  background-color: red;
+  background-image: url('/media/images/cause.jpg');
+}
+.form{
+ margin-left:18%;
+ background-color:white;
+ width:500px;
+ height:550px;
+ box-shadow:0px 10px 10px gray;
+ float:left;
+}
+.formm{
+ margin-left:1%;
+ background-color:white;
+ width:500px;
+ height:550px;
+ box-shadow:0px 10px 10px gray;
+ float:left;
+}
+label,input{
+  font-size: 16px;
+
+}
+td{
+
+  padding:4px;
+
+}
+</style>
+</head>
+<body>
+
+<div class="navigation">
+  <div class="round">
+  </div>
+  <a href="{% url 'overview_company' %}"><button>Overview</button></a>
+    <a href="{% url 'upload' %}"><button style="background-color:black;color:white;">Add product</button></a>
+    <a href="{% url 'company_reports' %}"><button>Results</button></a>
+    <a href="{% url 'company_profile' %}"><button>Profile</button></a>
+    <a href="{% url 'signout' %}"><button>Sign Out</button></a>
+</div>
+
+<div class="top"><center><h2>Product added</h2></center><hr></div>
+<div style="margin-left:32%;margin-top:8%;font-size:30px;background-color:white;width:700px;color:darkgreen;">
+<center>  The Product has been added sucessfully<br><br><br>
+  <a href="{% url 'upload' %}"><button style="font-size:30px;background-color:powderblue;">Add other products</button></a>&nbsp;&nbsp;<a href="{% url 'overview_company' %}"><button style="font-size:30px;">Head back to Overview</button></a>
+</div>
+</body>
+</html>
